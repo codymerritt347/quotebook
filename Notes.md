@@ -10,3 +10,7 @@
 - https://fsymbols.com/text-art/
 - https://www.asciiart.eu/art-and-design/borders
 - https://medium.com/@ms.hernandeza1/are-you-making-a-cli-app-use-tty-prompt-2d483bd8823b
+
+### ETC
+- https://www.makeareadme.com
+- https://tldrlegal.com/license/mit-license#summary
