@@ -3,5 +3,6 @@ require_relative './quotebook/cli'
 require_relative './quotebook/quote'
 require_relative './quotebook/version'
 
+require 'pry'
 require 'rake'
 require 'httparty'
