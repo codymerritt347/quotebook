@@ -1,5 +1,13 @@
 # Quotebook Notes
 
+## Structure
+
+### Quotes Class
+
+1. Person
+2. Favorite
+3. 
+
 ## Helpful Links
 
 ### API
