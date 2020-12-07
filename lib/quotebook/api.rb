@@ -10,7 +10,6 @@ class API
     formatted_resp["quotes"].each do |quotes_hash|
       Quote.new(quotes_hash["quoteText"], quotes_hash["quoteAuthor"])
     end
-    binding.pry
   end
 
 end
