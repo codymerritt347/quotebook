@@ -5,21 +5,37 @@ class CLI
    def welcome
       display_logo
       display_banner
+      binding.pry
+      main_menu
    end
 
    def main_menu
+      prompt = TTY::Prompt.new
+      main_menu = prompt.select("MAIN MENU:", ["Quote of the Day", "Discover Quotes", "My Favorites", "Guessing Game"])
+      case main_menu
+      when "Quote of the Day"
+         quote_of_the_day
+      when "Discover Quotes"
+         discover_quotes
+      when "My Favorites"
+         my_favorites
+      when "Guessing Game"
+         guessing_game
+      else
+         puts "Do you want to quit?"
+      end
    end
 
    def quote_of_the_day
    end
 
-   def fine_quote
+   def discover_quotes
    end
 
-   def favorites
+   def my_favorites
    end
 
-   def quote_game
+   def guessing_game
    end
 
    def exit
