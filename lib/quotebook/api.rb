@@ -7,7 +7,9 @@ class API
     uri = URI(thousand_quotes)
     response = Net::HTTP.get(uri)
     formatted_resp = JSON.parse(response)
-    binding.pry
+    formatted_resp["quotes"].each do |quotes_hash|
+      binding.pry
+    end
   end
 
 end
