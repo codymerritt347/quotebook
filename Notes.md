@@ -7,7 +7,8 @@
 3. Find new quotes
 4. My Favorites
 5. Quote Quessing Game
-6. Exit
+6. Search??
+7. Exit
 
 ## Helpful Links
 
