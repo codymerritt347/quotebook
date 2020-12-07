@@ -16,4 +16,8 @@ class Quote
   def self.all
     @@all
   end
+
+  def favorite
+    self.favorite = true
+  end
 end
