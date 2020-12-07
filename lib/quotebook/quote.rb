@@ -2,7 +2,7 @@ class Quote
   @@all = []
   attr_accessor :text, :author, :favorite
 
-  def initialize(text:, author:, favorite:)
+  def initialize(text, author)
     self.text = text
     self.author = author
     self.favorite = false
