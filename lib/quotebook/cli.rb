@@ -1,6 +1,6 @@
 class CLI
 
-   DAILY_QUOTE_ID = rand(1..1000)
+   DAILY_QUOTE_ID = rand(0..999)
 
    def welcome
       display_logo
@@ -27,6 +27,8 @@ class CLI
    end
 
    def quote_of_the_day
+      puts Quote.all[DAILY_QUOTE_ID].text.colorize(:blue)
+      puts Quote.all[DAILY_QUOTE_ID].author.colorize(:red)
    end
 
    def discover_quotes
