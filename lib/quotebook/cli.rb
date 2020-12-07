@@ -1,11 +1,24 @@
 class CLI
 
-   def self.display_quotes
-      Quote.all.each do |quote|
-         puts quote.text
-         puts quote.author
-         # binding.pry
-      end
+   def welcome
+   end
+
+   def main_menu
+   end
+
+   def quote_of_the_day
+   end
+
+   def fine_quote
+   end
+
+   def favorites
+   end
+
+   def quote_game
+   end
+
+   def exit
    end
 
 end

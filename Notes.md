@@ -2,11 +2,12 @@
 
 ## Structure
 
-### Quotes Class
-
-1. Person
-2. Favorite
-3. 
+1. Welcome to Quotebook
+2. Quote of the Day
+3. Find new quotes
+4. My Favorites
+5. Quote Quessing Game
+6. Exit
 
 ## Helpful Links
 
