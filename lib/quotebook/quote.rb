@@ -17,7 +17,19 @@ class Quote
     @@all
   end
 
-  def favorite
-    self.favorite = true
+  def self.favorites
+    # favorite_quotes = []
+    # all.each do |quote|
+    #   if quote.favorite == true
+    #     favorite_quotes << self
+    #   end
+    # end
+    # puts favorite_quotes
+  end
+
+  def self.authors
+  end
+
+  def self.texts
   end
 end
