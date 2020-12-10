@@ -8,7 +8,8 @@ class API
     response = Net::HTTP.get(uri)
     formatted_resp = JSON.parse(response)
     formatted_resp["quotes"].each do |quotes_hash|
-      Quote.new(quotes_hash["quoteText"], quotes_hash["quoteAuthor"])
+      author = Author.new(quotes_hash["quoteAuthor"])
+      Quote.new(quotes_hash["quoteText"], author)
     end
   end
 

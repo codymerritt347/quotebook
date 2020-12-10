@@ -3,17 +3,22 @@ class Author
 
    @@all = []
 
-   def initialize(name = "Unknown")
-      @name = name
-      save
+   def initialize(name)
+      if name == ""
+         @name = "Unknown"
+      else
+         @name = name
+      end
+      self.class.all << self
    end
 
    def self.all
       @@all
    end
 
-   def save
-      self.class.all << self
+   def quotes
+      quotes = Quote.all.select {|q| q.author == self}
+      quotes.collect {|q| q.text}
    end
-
+   
 end

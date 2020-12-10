@@ -1,35 +1,38 @@
 class Quote
 
-  attr_accessor :text, :favorite
-  attr_reader :artist
+  attr_accessor :text, :favorite, :author
 
   @@all = []
 
-  def initialize(text, author = nil)
+  def initialize(text, author)
     @text = text
-    self.author = author if artist
-    self.favorite = false
-    save
+    @author = author
+    @favorite = false
+    self.class.all << self
   end
 
   def self.all
     @@all
   end
 
-  def save
-    self.class.all << self
+  def self.find_by_author(author)
+    results = all.select {|q| q.author.name == author}
+    results.collect {|q| q.text}
   end
 
-  def favorite
-    self.favorite = true
+  def make_favorite
+    @favorite = true
+    "Added Quote to My Favorites"
   end
 
   def unfavorite
-    self.favorite = false
+    @favorite = false
+    "Removed Quote from My Favorites"
   end
 
-  def self.find_by_author(author)
-    all.detect {|q| q.author = author}
+  def self.favorites
+    results = all.select {|q| q.favorite == true}
+    results.collect {|q| q.text}
   end
 
 end
