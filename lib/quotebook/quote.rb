@@ -17,19 +17,22 @@ class Quote
     @@all
   end
 
-  def self.favorites
-    # favorite_quotes = []
-    # all.each do |quote|
-    #   if quote.favorite == true
-    #     favorite_quotes << self
-    #   end
-    # end
-    # puts favorite_quotes
-  end
-
   def self.authors
   end
 
   def self.texts
   end
+
+  def favorite
+    self.favorite = true
+  end
+
+  def unfavorite
+    self.favorite = false
+  end
+
+  def self.find_by_author(author)
+    all.detect {|q| q.author = author}
+  end
+  
 end
