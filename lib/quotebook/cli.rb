@@ -3,7 +3,7 @@ class CLI
    DAILY_QUOTE_ID = rand(0..999)
 
    def welcome
-      display_logo
+      Artwork.display_logo
       display_banner
       main_menu
    end
@@ -38,24 +38,14 @@ class CLI
    end
 
    def my_favorites
-      Quote.favorites
+      if Quote.favorites.empty?
+         puts "You have no Favorites!"
+      else
+         Quote.favorites
+      end
    end
 
    def guessing_game
-   end
-
-   def exit
-   end
-
-   def display_logo
-      puts "
-      ░██████╗░██╗░░░██╗░█████╗░████████╗███████╗██████╗░░█████╗░░█████╗░██╗░░██╗
-      ██╔═══██╗██║░░░██║██╔══██╗╚══██╔══╝██╔════╝██╔══██╗██╔══██╗██╔══██╗██║░██╔╝
-      ██║██╗██║██║░░░██║██║░░██║░░░██║░░░█████╗░░██████╦╝██║░░██║██║░░██║█████═╝░
-      ╚██████╔╝██║░░░██║██║░░██║░░░██║░░░██╔══╝░░██╔══██╗██║░░██║██║░░██║██╔═██╗░
-      ░╚═██╔═╝░╚██████╔╝╚█████╔╝░░░██║░░░███████╗██████╦╝╚█████╔╝╚█████╔╝██║░╚██╗
-      ░░░╚═╝░░░░╚═════╝░░╚════╝░░░░╚═╝░░░╚══════╝╚═════╝░░╚════╝░░╚════╝░╚═╝░░╚═╝
-      ".colorize(:light_blue)
    end
 
    def display_banner
