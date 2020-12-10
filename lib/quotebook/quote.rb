@@ -35,4 +35,8 @@ class Quote
     results.collect {|q| q.text}
   end
 
+  def shorter_quote
+    self.text[0...30] + "..."
+  end
+
 end
