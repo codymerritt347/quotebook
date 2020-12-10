@@ -1,26 +1,23 @@
 class Quote
-  @@all = []
-  attr_accessor :text, :author, :favorite
 
-  def initialize(text, author)
-    self.text = text
-    self.author = author
+  attr_accessor :text, :favorite
+  attr_reader :artist
+
+  @@all = []
+
+  def initialize(text, author = nil)
+    @text = text
+    self.author = author if artist
     self.favorite = false
     save
-  end
-
-  def save
-    self.class.all << self
   end
 
   def self.all
     @@all
   end
 
-  def self.authors
-  end
-
-  def self.texts
+  def save
+    self.class.all << self
   end
 
   def favorite
@@ -34,5 +31,5 @@ class Quote
   def self.find_by_author(author)
     all.detect {|q| q.author = author}
   end
-  
+
 end
