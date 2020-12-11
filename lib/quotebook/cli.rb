@@ -24,7 +24,7 @@ class CLI
 
    def quote_of_the_day
       puts Quote.all[DAILY_QUOTE_ID].text.colorize(:blue)
-      puts Quote.all[DAILY_QUOTE_ID].author.colorize(:red)
+      puts Quote.all[DAILY_QUOTE_ID].author.name.colorize(:red)
       prompt = TTY::Prompt.new.yes?("Do you want to add this quote to your Favorites?")
       if prompt
          Quote.all[DAILY_QUOTE_ID].make_favorite
@@ -41,7 +41,9 @@ class CLI
       if Quote.favorites.empty?
          puts "You have no Favorites!"
       else
-         Quote.favorites
+         Quote.all.favorites.each do |quote|
+            puts quote
+         end
       end
    end
 

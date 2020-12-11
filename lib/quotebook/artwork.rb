@@ -11,7 +11,7 @@ class Artwork
       ".colorize(:light_blue)
    end
 
-   def display_banner
+   def self.display_banner
       puts "
              .:+oossssssssssssssssssssssssssssss+  `:+oo/-    -+oo+:      
              :os/-.`                                 +oooooo-  :oooooo/     
