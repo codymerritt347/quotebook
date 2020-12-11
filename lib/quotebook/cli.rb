@@ -50,4 +50,9 @@ class CLI
    def guessing_game
    end
 
+   def quote_box(quote)
+      box = TTY::Box.frame quote.text, "-#{quote.author.name}", padding: 3, align: :center
+      print box
+   end
+
 end

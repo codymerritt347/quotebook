@@ -4,6 +4,8 @@ class Quote
 
   @@all = []
 
+  # GENERAL
+
   def initialize(text, author)
     @text = text
     @author = author
@@ -15,18 +17,15 @@ class Quote
     @@all
   end
 
-  def self.find_by_author(author)
-    results = all.select {|q| q.author.name == author}
-    results.collect {|q| q.text}
-  end
+  # FAVORTES
 
   def make_favorite
-    @favorite = true
+    self.favorite? "This Quote is already a favorite!" : @favorite = true
     "Added Quote to My Favorites"
   end
 
   def unfavorite
-    @favorite = false
+    self.favorite? @favorite = false | "This Quote hasn't been favorited!"
     "Removed Quote from My Favorites"
   end
 
@@ -35,13 +34,13 @@ class Quote
     results.collect {|q| q.text}
   end
 
+  # FORMATTING
+
   def shorter_quote
-    self.text[0...30] + "..."
+    self.text[0...50] + "..."
   end
 
-  # def self.love_quotes
-  #   all.collect{|q|q.text}.grep(/\b[Hh]eaven\b/).count
-  # end
+  # CATEGORIES
 
   def self.love_quotes
     love_quotes = []
@@ -50,7 +49,7 @@ class Quote
         love_quotes << quote
       end
     end
-    puts love_quotes.count
+    love_quotes
   end
 
   def self.money_quotes
@@ -60,7 +59,7 @@ class Quote
         money_quotes << quote
       end
     end
-    puts money_quotes.count
+    money_quotes
   end
 
   def self.nature_quotes
@@ -70,7 +69,7 @@ class Quote
         nature_quotes << quote
       end
     end
-    puts nature_quotes.count
+    nature_quotes
   end
 
   def self.success_quotes
@@ -80,7 +79,7 @@ class Quote
         success_quotes << quote
       end
     end
-    puts success_quotes.count
+    success_quotes
   end
 
   def self.happy_quotes
@@ -90,7 +89,7 @@ class Quote
         happy_quotes << quote
       end
     end
-    puts happy_quotes.count
+    happy_quotes
   end
 
   def self.courage_quotes
@@ -100,7 +99,7 @@ class Quote
         courage_quotes << quote
       end
     end
-    puts courage_quotes.count
+    courage_quotes
   end
 
   def self.universe_quotes
@@ -110,7 +109,7 @@ class Quote
         universe_quotes << quote
       end
     end
-    puts universe_quotes.count
+    universe_quotes
   end
 
 end
