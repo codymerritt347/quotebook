@@ -4,7 +4,7 @@ class CLI
 
    def welcome
       Artwork.display_logo
-      display_banner
+      Artwork.display_banner
       main_menu
    end
 
@@ -27,9 +27,9 @@ class CLI
       puts Quote.all[DAILY_QUOTE_ID].author.colorize(:red)
       prompt = TTY::Prompt.new.yes?("Do you want to add this quote to your Favorites?")
       if prompt
-         Quote.all[DAILY_QUOTE_ID].favorite = true
+         Quote.all[DAILY_QUOTE_ID].make_favorite
       else
-         Quote.all[DAILY_QUOTE_ID].favorite = false
+         Quote.all[DAILY_QUOTE_ID]
       end
       main_menu
    end
@@ -48,28 +48,4 @@ class CLI
    def guessing_game
    end
 
-   def display_banner
-      puts "
-             .:+oossssssssssssssssssssssssssssss+  `:+oo/-    -+oo+:      
-             :os/-.`                                 +oooooo-  :oooooo/     
-           .os:                                      /oooooo:  -ooooooo     
-          .so`                                        -////o`   .:///o-     
-          +s.                                           `:+.       -+-      
-          ss                                          `::.       :/-        
-          ss                                                         -+-    
-          ss              Welcome to Quotebook!                      :s:    
-          ss              Find a little inspiration                  :s:    
-          ss              from some of the world's                   :s:    
-          ss              greatest thinkers.                         :s:    
-          ss                                                         :s:    
-          ss                                   -Cody M.              :s:    
-          oo   `         `                                           :s:    
-            .//-      `:/-`                                          :s:    
-           //`       -+.                                             os.    
-          /o+oo+:   -o+ooo/`                                       `+s:     
-          ooooooo:  /oooooo+                                     `:oo-      
-          :oooooo-  .oooooo/  `...............................-:+so:        
-           `://:`    `-//:.   .+++++++++++++++++++++++++++++++/:-`          
-      ".colorize(:light_cyan)
-   end
 end

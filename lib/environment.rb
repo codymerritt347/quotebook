@@ -7,6 +7,8 @@ require_relative './quotebook/version'
 
 require 'pry'
 require 'rake'
+require 'httparty'
 require 'net/http'
 require 'tty-prompt'
+require 'tty-pager'
 require 'colorize'
