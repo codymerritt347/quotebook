@@ -38,8 +38,7 @@ class Quote
   end
 
   def self.favorites
-    results = all.select {|q| q.favorite == true}
-    results.collect {|q| q.text}
+    all.select {|q| q.favorite == true}
   end
 
   # FORMATTING

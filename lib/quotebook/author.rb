@@ -17,10 +17,5 @@ class Author
    def self.all
       @@all
    end
-
-   def quotes
-      quotes = Quote.all.select {|q| q.author == self}
-      quotes.collect {|q| q.text}
-   end
    
 end

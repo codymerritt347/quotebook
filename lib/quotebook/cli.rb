@@ -7,45 +7,40 @@ class CLI
    end
 
    def main_menu
-      main_menu = TTY::Prompt.new.select("MAIN MENU:", ["Quote of the Day", "Discover Quotes", "My Favorites", "Guessing Game"])
+      main_menu = TTY::Prompt.new.select("MAIN MENU:", ["Surprise Me!", "Browse Quotes", "My Favorites"])
       case main_menu
-      when "Quote of the Day"
-         quote_of_the_day
-      when "Discover Quotes"
-         discover_quotes
+      when "Surprise Me!"
+         surprise_me
+      when "Brose Quotes"
+         browse_quotes
       when "My Favorites"
          my_favorites
-      when "Guessing Game"
-         guessing_game
       end
    end
 
-   def quote_of_the_day
-      puts Quote.all[DAILY_QUOTE_ID].text.colorize(:blue)
-      puts Quote.all[DAILY_QUOTE_ID].author.name.colorize(:red)
-      prompt = TTY::Prompt.new.yes?("Do you want to add this quote to your Favorites?")
-      if prompt
-         Quote.all[DAILY_QUOTE_ID].make_favorite
-      else
-         Quote.all[DAILY_QUOTE_ID]
+   def surprise_me
+      surprise = Quote.random_quote
+      puts surprise.text
+      puts surprise.author.name
+      what_next = TTY::Prompt.new.select("What now?", ["Another one!", "Add to My Favorites", "Main Menu"])
+      case what_next
+      when "Another one!"
+         surprise_me
+      when "Add to My Favorites"
+         surprise.make_favorite
+         my_favorites
+      when "Main Menu"
+         main_menu
       end
-      main_menu
    end
 
-   def discover_quotes
+   def browse_quotes
+      quote_categories = TTY::Prompt.new.select("LOVE", "MONEY", "NATURE", "SUCCESS", "HAPPINESS", "COURAGE", "UNIVERSE")
+
    end
 
    def my_favorites
-      if Quote.favorites.empty?
-         puts "You have no Favorites!"
-      else
-         Quote.all.favorites.each do |quote|
-            puts quote
-         end
-      end
-   end
-
-   def guessing_game
+      Quote.favorites
    end
 
    def quote_box(quote)
