@@ -3,6 +3,8 @@ class Author
 
    @@all = []
 
+   # GENERAL
+
    def initialize(name)
       if name == ""
          @name = "Unknown"

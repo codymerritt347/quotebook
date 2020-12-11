@@ -1,7 +1,5 @@
 class CLI
 
-   DAILY_QUOTE_ID = rand(0..999)
-
    def welcome
       Artwork.display_logo
       Artwork.display_banner

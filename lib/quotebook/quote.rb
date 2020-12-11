@@ -20,13 +20,21 @@ class Quote
   # FAVORTES
 
   def make_favorite
-    self.favorite? "This Quote is already a favorite!" : @favorite = true
-    "Added Quote to My Favorites"
+    if self.favorite == true
+      "This Quote is already in My Favorites!"
+    else
+      self.favorite = true
+      "This Quote has been added to My Favorites"
+    end
   end
 
   def unfavorite
-    self.favorite? @favorite = false | "This Quote hasn't been favorited!"
-    "Removed Quote from My Favorites"
+    if self.favorite == false
+      "This Quote is not in My Favorites!"
+    else
+      self.favorite = false
+      "This Quote has been removed from My Favorites"
+    end
   end
 
   def self.favorites
@@ -38,6 +46,13 @@ class Quote
 
   def shorter_quote
     self.text[0...50] + "..."
+  end
+  
+  # RANDOM
+
+  def self.random_quote
+    random_number = rand(0..4999)
+    all[random_number]
   end
 
   # CATEGORIES
