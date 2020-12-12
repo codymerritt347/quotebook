@@ -87,4 +87,11 @@ class CLI
       main_menu
    end
 
+   def standard_quote_window(quote)
+      box = TTY::Box.frame(width: 30, height: 10, border: :thick) do
+         "#{quote.text}\n\n-#{quote.author.name}"
+      end
+      print box
+   end
+
 end
