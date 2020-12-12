@@ -1,6 +1,6 @@
 class Quote
 
-  attr_accessor :text, :favorite, :author
+  attr_accessor :text, :author, :favorite, :keywords
 
   @@all = []
 
@@ -10,6 +10,7 @@ class Quote
     @text = text
     @author = author
     @favorite = false
+    @keywords = []
     self.class.all << self
   end
 
@@ -21,24 +22,55 @@ class Quote
 
   def make_favorite
     if self.favorite == true
-      "This Quote is already in My Favorites!"
+      puts "This Quote is already in My Favorites!"
     else
       self.favorite = true
-      "This Quote has been added to My Favorites"
+      puts "This Quote has been added to My Favorites"
     end
   end
 
   def unfavorite
     if self.favorite == false
-      "This Quote is not in My Favorites!"
+      puts "This Quote is not in My Favorites!"
     else
       self.favorite = false
-      "This Quote has been removed from My Favorites"
+      puts "This Quote has been removed from My Favorites"
     end
   end
 
   def self.favorites
     all.select {|q| q.favorite == true}
+  end
+  
+  # RANDOM
+
+  def self.random_quote
+    random_number = rand(0..499)
+    random_quote = all[random_number]
+    random_quote
+  end
+
+  # KEYWORDS
+
+  def self.create_keywords
+    all.each do |quote|
+      if quote.text.match(/\b[Ll]ove\b/)
+        quote.keywords << "Love"
+      elsif quote.text.match(/\b[Mm]oney\b/)
+        quote.keywords << "Money"
+      elsif quote.text.match(/\b[Nn]ature\b/)
+        quote.keywords << "Nature"
+      elsif quote.text.match(/\b[Ss]uccess\b/)
+        quote.keywords << "Success"
+      elsif quote.text.match(/\b[Hh]appy|[Hh]appiness\b/)
+        quote.keywords << "Happiness"
+      elsif quote.text.match(/\b[Cc]ourage\b/)
+        quote.keywords << "Courage"
+      elsif quote.text.match(/\b[Uu]niverse\b/)
+        quote.keywords << "Universe"
+      end
+    end
+    puts "Creating keywords..."
   end
 
   # FORMATTING
@@ -46,84 +78,13 @@ class Quote
   def shorter_quote
     self.text[0...50] + "..."
   end
-  
-  # RANDOM
 
-  def self.random_quote
-    random_number = rand(0..4999)
-    all[random_number]
-  end
-
-  # CATEGORIES
-
-  def self.love_quotes
-    love_quotes = []
-    all.collect do |quote|
-      if quote.text.match(/\b[Ll]ove\b/)
-        love_quotes << quote
-      end
+  def self.display_quotes(quotes_hash)
+    short_quotes = []
+    quotes_hash.collect do |quote|
+      short_quotes << quote.shorter_quote
     end
-    love_quotes
-  end
-
-  def self.money_quotes
-    money_quotes = []
-    all.collect do |quote|
-      if quote.text.match(/\b[Mm]oney\b/)
-        money_quotes << quote
-      end
-    end
-    money_quotes
-  end
-
-  def self.nature_quotes
-    nature_quotes = []
-    all.collect do |quote|
-      if quote.text.match(/\b[Nn]ature\b/)
-        nature_quotes << quote
-      end
-    end
-    nature_quotes
-  end
-
-  def self.success_quotes
-    success_quotes = []
-    all.collect do |quote|
-      if quote.text.match(/\b[Ss]uccess\b/)
-        success_quotes << quote
-      end
-    end
-    success_quotes
-  end
-
-  def self.happy_quotes
-    happy_quotes = []
-    all.collect do |quote|
-      if quote.text.match(/\b[Hh]appy|[Hh]appiness\b/)
-        happy_quotes << quote
-      end
-    end
-    happy_quotes
-  end
-
-  def self.courage_quotes
-    courage_quotes = []
-    all.collect do |quote|
-      if quote.text.match(/\b[Cc]ourage\b/)
-        courage_quotes << quote
-      end
-    end
-    courage_quotes
-  end
-
-  def self.universe_quotes
-    universe_quotes = []
-    all.collect do |quote|
-      if quote.text.match(/\b[Uu]niverse\b/)
-        universe_quotes << quote
-      end
-    end
-    universe_quotes
+    short_quotes
   end
 
 end

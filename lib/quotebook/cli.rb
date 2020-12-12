@@ -2,17 +2,18 @@ class CLI
 
    def welcome
       Artwork.display_logo
-      Artwork.display_banner
+      sleep(2)
       main_menu
    end
 
    def main_menu
+      Artwork.display_banner
       prompt = TTY::Prompt.new
-      prompt.select("MAIN MENU:", ["Surprise Me!", "Browse Quotes", "My Favorites"])
-      case prompt
+      selection = prompt.select("MAIN MENU:", ["Surprise Me!", "Browse Quotes", "My Favorites"])
+      case selection
       when "Surprise Me!"
          surprise_me
-      when "Brose Quotes"
+      when "Browse Quotes"
          browse_quotes
       when "My Favorites"
          my_favorites
@@ -20,17 +21,21 @@ class CLI
    end
 
    def surprise_me
+      puts "Don't find the Quote. Let the Quote find YOU!"
+      sleep(1)
       surprise = Quote.random_quote
-      puts surprise.text
-      puts surprise.author.name
+      box = TTY::Box.frame(width: 40, height: 15, align: :center, padding: 3) do
+         "#{surprise.text}\n\n-#{surprise.author.name}"
+      end
+      print box
       prompt = TTY::Prompt.new
-      prompt.select("What now?", ["Another one!", "Add to My Favorites", "Main Menu"])
-      case prompt
-      when "Another one!"
+      selection = prompt.select("Deep... What do you think?", ["Nah...Try another one!", "Yes! Add to My Favorites", "Main Menu"])
+      case selection
+      when "Nah...Try another one!"
          surprise_me
-      when "Add to My Favorites"
+      when "Yes! Add to My Favorites"
          surprise.make_favorite
-         prompt
+         main_menu
       when "Main Menu"
          main_menu
       end
@@ -38,26 +43,48 @@ class CLI
 
    def browse_quotes
       prompt = TTY::Prompt.new
-      prompt.select("LOVE", "MONEY", "NATURE", "SUCCESS", "HAPPINESS", "COURAGE", "UNIVERSE")
-      case prompt
+      selection = prompt.select("Select:", ["LOVE", "MONEY", "NATURE", "SUCCESS", "HAPPINESS", "COURAGE", "UNIVERSE"])
+      case selection
       when "LOVE"
+         display_quotes(Quote.love_quotes)
       when "MONEY"
+         display_quotes(Quote.money_quotes)
       when "NATURE"
+         display_quotes(Quote.nature_quotes)
       when "SUCCESS"
+         display_quotes(Quote.success_quotes)
       when "HAPPINESS"
+         display_quotes(Quote.happy_quotes)
       when "COURAGE"
+         display_quotes(Quote.courage_quotes)
       when "UNIVERSE"
+         display_quotes(Quote.universe_quotes)
       end
    end
 
-   def my_favorites
-      prompt = TTY::Prompt.new
-      prompt.select("Your Favorites:", Quote.all, per_page: 4)
+   def display_quotes(hash)
+      table = TTY::Table.new
+      table << ["", "Author", "Quote"]
+      x = 1
+      hash.each do |quote|
+         table << [x, quote.author.name, quote.shorter_quote]
+         x+=1
+      end
+      puts table.render(:unicode)
+      browse_quotes
    end
 
-   def quote_box(quote)
-      box = TTY::Box.frame quote.text, "-#{quote.author.name}", padding: 3, align: :center
-      print box
+   def my_favorites
+      puts "THESE ARE MY FAVORITES"
+      table = TTY::Table.new
+      table << ["", "Author", "Quote"]
+      x = 1
+      Quote.favorites.each do |quote|
+         table << [x, quote.author.name, quote.text]
+         x+=1
+      end
+      puts table.render(:unicode, resize: true)
+      main_menu
    end
 
 end
