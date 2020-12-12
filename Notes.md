@@ -24,3 +24,4 @@
 ### ETC
 - https://www.makeareadme.com
 - https://tldrlegal.com/license/mit-license#summary
+- https://dev.to/vaporyhumo/how-i-write-a-gemspec-p42

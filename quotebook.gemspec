@@ -22,11 +22,20 @@ Gem::Specification.new do |spec|
     'source_code_uri'   => spec.homepage
   }
 
-  spec.bindir      = 'exe'
-  spec.executables = ['lumise']
+  spec.bindir      = 'bin'
+  spec.executables = ['quotebook']
   spec.files       = Dir['lib/**/*'] # Dir['lib/**/{*,.*}']
 
   spec.required_ruby_version = '>= 2.4.0'
 
-  spec.add_dependency 'thor', '~> 1.0'
+  spec.add_dependency 'pry'
+  spec.add_dependency 'rake'
+  spec.add_dependency 'httparty'
+  spec.add_dependency 'net-http'
+  spec.add_dependency 'tty-table'
+  spec.add_dependency 'tty-prompt'
+  spec.add_dependency 'tty-box'
+  spec.add_dependency 'tty-font'
+  spec.add_dependency 'colorize'
+  spec.add_dependency 'table_print'
 end
