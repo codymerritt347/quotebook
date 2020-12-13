@@ -7,9 +7,16 @@ class Window
 
    # BANNERS
 
+   def self.time_banner(message)
+      box = TTY::Box.frame(width: 60, height: 4) do
+         " #{Time.now}\n " + message
+      end
+      puts box
+   end
+
    def self.reg_banner(message)
       box = TTY::Box.frame(width: 60, height: 4) do
-         "#{Time.now}\n#{message}"
+         " " + message
       end
       puts box
    end
