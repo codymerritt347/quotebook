@@ -88,7 +88,19 @@ class CLI
          q.in "1-12"
          q.messages[:range?] = "I don't understand. Try again?"
       end
+      Screen.clear
+      reg_banner("#{Genre.unique_genres[response-1]}:".upcase)
       genre_window(Genre.unique_genres[response-1])
+
+      prompt = TTY::Prompt.new
+      response = prompt.ask("Type some of the quote you want to see:")
+      found_quote = nil
+      Quote.all.collect do |quote|
+         if quote.text.include?(response)
+            found_quote = quote
+         end
+      end
+      quote_window(found_quote)
    end
 
    def my_favorites
@@ -132,10 +144,12 @@ class CLI
 
    def genre_window(genre)
       table = TTY::Table.new
-      x=1
-      Quote.all.collect do |quote|
-         table << ["#{x}.", quote.author.name, quote.shorter_quote] if quote.genre.name == genre
-         x+=1
+      counter = 1
+      Quote.all.each do |quote|
+         if quote.genre.name == genre
+            table << [counter, quote.author.name, quote.shorter_quote]
+            counter += 1
+         end
       end
       puts table.render(:unicode, width: 60, resize: true)
    end
