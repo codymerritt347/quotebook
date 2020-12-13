@@ -7,6 +7,7 @@ require_relative './quotebook/version'
 
 require 'pry'
 require 'net/http'
+require 'json'
 require 'tty-table'
 require 'tty-prompt'
 require 'tty-box'

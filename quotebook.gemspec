@@ -30,6 +30,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'pry'
   spec.add_dependency 'net-http'
+  spec.add_dependency 'json'
   spec.add_dependency 'tty-table'
   spec.add_dependency 'tty-prompt'
   spec.add_dependency 'colorize'
