@@ -52,10 +52,10 @@ class CLI
 
       prompt = TTY::Prompt.new
       response = prompt.ask("Please enter number for option", convert: :int) do |q|
-         q.in "1..3"
+         q.in 1..3
          q.messages[:range?] = "I don't understand. Try again?"
       end
-      case user_input
+      case response
       when 1
          return_to_surprise
       when 2
@@ -94,7 +94,7 @@ class CLI
    def browse_quotes
       Screen.clear
 
-      Window.reg_banner("TOPICS:")
+      Window.time_banner("TOPICS:")
       Window.browse_window
       
       prompt = TTY::Prompt.new

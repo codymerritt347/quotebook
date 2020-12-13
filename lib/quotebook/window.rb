@@ -9,7 +9,7 @@ class Window
 
    def self.time_banner(message)
       box = TTY::Box.frame(width: 60, height: 4) do
-         " #{Time.now}\n " + message
+         " #{DateTime.now.strftime("%m/%d/%Y %H:%M")}\n " + message
       end
       puts box
    end
@@ -37,7 +37,7 @@ class Window
    end
 
    def self.quote_window(quote)
-      box = TTY::Box.frame(width: 60, height: 20, border: :thick, padding: 2, align: :center, title: {top_left: "\"", bottom_right: "\""}) do
+      box = TTY::Box.frame(width: 60, height: 20, border: :thick, padding: 3, align: :center, title: {top_left: "\"", bottom_right: "\""}) do
          "#{quote.text}\n\n-#{quote.author.name}"
       end
       puts box
@@ -46,9 +46,12 @@ class Window
    def self.browse_window
       table = TTY::Table.new
       Genre.unique_genres.each_with_index do |genre,index|
-         table << ["#{index+1}.", genre]
+         table << ["#{index+1}.", genre.capitalize]
       end
-      puts table.render(:unicode, width: 60, resize: true)
+      box = TTY::Box.frame(width: 60, height: 20, border: :thick, padding: 2, align: :center, title: {top_left: "\"", bottom_right: "\""}) do
+         table.render(:unicode)
+      end
+      puts box
    end
 
    def self.genre_window(genre)
@@ -56,7 +59,7 @@ class Window
       counter = 1
       Quote.all.each do |quote|
          if quote.genre.name == genre
-            table << [counter, quote.author.name, quote.shorter_quote]
+            table << [counter, quote.author.name, quote.text]
             counter += 1
          end
       end
