@@ -34,7 +34,7 @@ class Quote
   # FORMATTING
 
   def shorter_quote
-    self.text[0...50] + "..."
+    self.text[0...30] + "..."
   end
 
   def self.display_quotes(quotes_hash)
