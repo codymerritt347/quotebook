@@ -1,6 +1,7 @@
 class Quote
 
-  attr_accessor :text, :author, :genre, :favorite
+  attr_accessor :favorite
+  attr_reader :text, :author, :genre
 
   @@all = []
 
