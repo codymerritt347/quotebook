@@ -44,10 +44,11 @@ class CLI
       Screen.clear
 
       random_num = rand(0..119)
-      random_quote = Quote.all[random_num]
+      Quote.all[random_num]
+      # binding.pry
 
       Window.time_banner("SURPISE!")
-      Window.quote_window(random_quote)
+      Window.quote_window(Quote.all[random_num])
       Window.bottom_banner(1,2,3,"Another!", "Favorite", "Menu")
 
       prompt = TTY::Prompt.new
@@ -59,28 +60,24 @@ class CLI
       when 1
          return_to_surprise
       when 2
-         if random_quote.favorite == true
+         if Quote.all[random_num].favorite == true
             Screen.clear
 
             Window.time_banner("MESSAGE:")
             Window.message_window("Excuse me...\n\nThis quote has already been added to My Favorites!\n\nDon't remember?Well then, let's revisit!")
             Window.reg_banner("Taking you to My Favorites...")
-
-            sleep(2)
-            Screen.clear
-            my_favorites
          else
-            random_quote.favorite = true
+            Quote.all[random_num].favorite = true
             Screen.clear
 
             Window.time_banner("MESSAGE:")
             Window.message_window("Great taste! I love that quote, too!\n\nThis quote has been added to My Favorites!\n\nLet's go check it out!")
             Window.reg_banner("Taking you to My Favorites...")
-
-            sleep(2)
-            Screen.clear
-            my_favorites
          end
+         sleep(2)
+         Screen.clear
+         binding.pry
+         my_favorites
       when 3
          Screen.clear
          main_menu
@@ -96,16 +93,22 @@ class CLI
 
       Window.time_banner("TOPICS:")
       Window.browse_window
+      Window.bottom_banner(1,2,3,"","","Menu")
       
       prompt = TTY::Prompt.new
       response = prompt.ask("Type number for genre ", convert: :int) do |q|
-         q.in "1-12"
+         q.in 3..3
          q.messages[:range?] = "I don't understand. Try again?"
+      end
+      case response
+      when 3
+         main_menu
       end
       Screen.clear
       
-      Window.reg_banner("#{Genre.unique_genres[response-1]}:".upcase)
+      Window.time_banner("#{Genre.unique_genres[response-1]}:".upcase)
       Window.genre_window(Genre.unique_genres[response-1])
+      Window.bottom_banner(1,2,3,"","Topics","")
 
       prompt = TTY::Prompt.new
       response = prompt.ask("Type some of the quote you want to see:")
@@ -115,15 +118,27 @@ class CLI
             found_quote = quote
          end
       end
+      Screen.clear
+
       Window.quote_window(found_quote)
    end
 
    def my_favorites
       Screen.clear
 
-      Window.reg_banner("MY FAVORITES:")
-      Window.message_window("")
-      Window.bottom_banner(1,2,3,"prev", "next", "main")
+      Window.time_banner("MY FAVORITES:")
+      Window.favorites_window
+      Window.bottom_banner(1,2,3,"", "", "main")
+
+      prompt = TTY::Prompt.new
+      response = prompt.ask("Type number for genre ", convert: :int) do |q|
+         q.in 3..3
+         q.messages[:range?] = "I don't understand. Try again?"
+      end
+      case response
+      when 3
+         main_menu
+      end
    end
 
 end

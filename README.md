@@ -1,12 +1,23 @@
 # Quotebook
 
-Quotebook is a book for your quotes.
+This is Quotebook, a CLI program that takes quotes from QuoteGarden REST API and organizes by twelve different topics.
+Users can browse through the different topics and find quotes that inspire them. Want to be surprised? Quotebook can generate a random quote for extra inspiration.
 
 ## Installation
 
+To install locally, clone this repository:
+https://github.com/codymerritt347/quotebook
+
+Then, in your terminal, change to the repository and run the following:
+```
+./bin/run_quotebook
+```
+
+You're ready to collect quotes!
+
 ## Usage
 
-## Contributing
+Once the main menu is loaded, you'll be greeted with a welcome message and options for generating a random quote, browse the twelves topics, or see what quotes you've collected as favorites. To access any of the menu options, type the number corresponding to the wanted option. From the main menu, type 'exit' to leave the program.
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+The gem is available as open source under the terms of the [MIT License](https://choosealicense.com/licenses/mit/).

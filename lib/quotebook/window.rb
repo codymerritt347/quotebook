@@ -66,4 +66,14 @@ class Window
       puts table.render(:unicode, width: 60, resize: true)
    end
 
+   def self.favorites_window
+      table = TTY::Table.new
+      counter = 1
+      Quote.favorites.each do |quote|
+         table << [counter, quote.author.name, quote.text]
+         counter += 1
+      end
+      puts table.render(:unicode, width: 60, resize: true)
+   end
+
 end
