@@ -31,18 +31,4 @@ class Quote
     random_quote
   end
 
-  # FORMATTING
-
-  def shorter_quote
-    self.text[0...30] + "..."
-  end
-
-  def self.display_quotes(quotes_hash)
-    short_quotes = []
-    quotes_hash.collect do |quote|
-      short_quotes << quote.shorter_quote
-    end
-    short_quotes
-  end
-
 end
