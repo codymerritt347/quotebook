@@ -4,6 +4,7 @@ require_relative './quotebook/cli'
 require_relative './quotebook/genre'
 require_relative './quotebook/quote'
 require_relative './quotebook/version'
+require_relative './quotebook/window'
 
 require 'pry'
 require 'net/http'
