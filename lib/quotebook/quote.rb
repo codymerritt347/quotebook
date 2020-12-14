@@ -31,4 +31,10 @@ class Quote
     random_quote
   end
 
+  # FORMATTING
+
+  def shorter_quote		
+    self.text[0...20] + "..."		
+  end
+
 end

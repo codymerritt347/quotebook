@@ -9,7 +9,7 @@ class Window
 
    def self.time_banner(message)
       box = TTY::Box.frame(width: 60, height: 4) do
-         " #{DateTime.now.strftime("%m/%d/%Y %H:%M")}\n " + message
+         " #{DateTime.now.strftime("%b %d,/%Y %l:%M %p")}\n " + message
       end
       puts box
    end
@@ -49,7 +49,7 @@ class Window
          table << ["#{index+1}.", genre.capitalize]
       end
       box = TTY::Box.frame(width: 60, height: 20, border: :thick, padding: 2, align: :center, title: {top_left: "\"", bottom_right: "\""}) do
-         table.render(:unicode)
+         table.render
       end
       puts box
    end
@@ -59,21 +59,25 @@ class Window
       counter = 1
       Quote.all.each do |quote|
          if quote.genre.name == genre
-            table << [counter, quote.author.name, quote.text]
+            table << [counter, quote.author.name, quote.shorter_quote]
             counter += 1
          end
       end
-      puts table.render(:unicode, width: 60, resize: true)
+      box = TTY::Box.frame(width: 60, height: 20, border: :thick, padding: 2, align: :center, title: {top_left: "\"", bottom_right: "\""}) do
+         table.render
+      end
+      puts box
    end
 
    def self.favorites_window
       table = TTY::Table.new
-      counter = 1
-      Quote.favorites.each do |quote|
-         table << [counter, quote.author.name, quote.text]
-         counter += 1
+      Quote.favorites.each_with_index do |quote, index|
+         table << ["#{index+1}. ", "#{quote.author.name}: ", quote.shorter_quote]
       end
-      puts table.render(:unicode, width: 60, resize: true)
+      box = TTY::Box.frame(width: 60, height: 20, border: :thick, padding: 2, align: :center, title: {top_left: "\"", bottom_right: "\""}) do
+         table.render
+      end
+      puts box
    end
 
 end
