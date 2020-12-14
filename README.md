@@ -3,6 +3,11 @@
 This is Quotebook, a CLI program that takes quotes from QuoteGarden REST API and organizes by twelve different topics.
 Users can browse through the different topics and find quotes that inspire them. Want to be surprised? Quotebook can generate a random quote for extra inspiration.
 
+![screenshot](quotebook.png "Quotebook screenshot")
+
+[Click here for Youtube tutorial](https://youtu.be/B18DGhvesYc)
+
+
 ## Installation
 
 To install locally, clone this repository:
