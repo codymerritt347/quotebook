@@ -11,7 +11,7 @@ class CLI
    def main_menu
       Screen.clear
       Window.time_banner("QUOTEBOOK")
-      Window.message_window("Welcome to Quotebook!\n\nHere are #{Quote.all.count} Quotes covering #{Genre.unique_genres.count} Topics collected here for you to discover and get inspired. \n\nFind a quote you admire? Add it to My Favorites list to keep it forever... or until you exit the program, we haven't quite covered that yet!\n\nLet's get started! Choose an options below.\n\n(To exit, type \"exit\")")
+      Window.message_window("WELCOME TO QUOTEBOOK!\n\nBrowse #{Quote.all.count} QUOTES covering #{Genre.unique_genres.count} TOPICS\nall collected here for you to discover and get inspired. \n\nFind a quote you admire?\nAdd it to MY FAVORITES list to keep it forever... or until you exit the program, we haven't quite covered that yet!\n\nLet's get started! Choose an options below.\n\n(To EXIT, type \"exit\")")
       Window.bottom_banner(1,2,3,"RANDOM", "TOPICS", "MY FAVORITES")
 
       user_input = nil
@@ -29,8 +29,8 @@ class CLI
       when "exit"
          Screen.clear
          Window.time_banner("AWWW, YOU'RE LEAVING...")
-         Window.message_window("GOOD BYE!\n\nThank you for checking out my first ever CLI program!\n\n-Cody")
-         Window.reg_banner("ADIOS! CIAO! AUF WEDERSEHEN!")
+         Window.message_window("GOOD BYE!\n\nThank you for\nchecking out my first ever\nCLI program!\n\n-Cody")
+         Window.reg_banner("ADIOS! AU REVOIR! CIAO! AUF WIEDERSEHEN!\nTOTSIENS! YASOU! ALOHA! NAMASTE! SLAN!")
 
          sleep(2)
          Screen.clear
@@ -73,7 +73,7 @@ class CLI
 
          my_favorites
       when 3
-         Screen.clear1
+         Screen.clear
          main_menu
       end
    end

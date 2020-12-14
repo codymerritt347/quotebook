@@ -1,10 +1,12 @@
 require_relative './quotebook/api'
 require_relative './quotebook/author'
 require_relative './quotebook/cli'
+require_relative './quotebook/cli_2'
 require_relative './quotebook/genre'
 require_relative './quotebook/quote'
 require_relative './quotebook/version'
 require_relative './quotebook/window'
+require_relative './quotebook/window_2'
 
 require 'pry'
 require 'net/http'
