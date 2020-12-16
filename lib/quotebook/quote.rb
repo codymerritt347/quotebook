@@ -2,7 +2,6 @@ class Quote
 
   attr_accessor :favorite
   attr_reader :text, :author, :genre
-
   @@all = []
 
   # GENERAL
@@ -19,6 +18,8 @@ class Quote
     @@all
   end
 
+  # FAVORTING
+  
   def self.favorites
     all.select {|q| q.favorite == true}
   end

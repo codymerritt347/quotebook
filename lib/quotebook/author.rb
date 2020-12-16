@@ -1,6 +1,6 @@
 class Author
+   
    attr_reader :name
-
    @@all = []
    @@unique_authors = []
 
@@ -23,6 +23,8 @@ class Author
    def self.unique_authors
       @@unique_authors
    end
+
+   # FORMATTING
 
    def shorter_name
       if self.name.length >= 14
