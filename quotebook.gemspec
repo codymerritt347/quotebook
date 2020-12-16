@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.authors = ['codymerritt347']
   spec.email   = ['cody.merritt@icloud.com']
 
-  spec.summary     = 'Discover, collect, and keep your favorite inspirational quotes.'
-  spec.description = 'Quotebook is a CLI gem that collects 120 quotes over 12 topics from the QuoteGarden API.'
+  spec.summary     = 'Discover new quotes and collect your favorites in one convenient place.'
+  spec.description = 'Quotebook is a CLI gem that collects 180 quotes over 12 topics from the QuoteGarden API.'
   spec.license     = 'MIT'
   spec.homepage    = 'https://github.com/codymerritt347/quotebook'
 
@@ -33,5 +33,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'json'
   spec.add_dependency 'tty-table'
   spec.add_dependency 'tty-prompt'
+  spec.add_dependency 'tty-box'
   spec.add_dependency 'colorize'
 end
