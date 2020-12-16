@@ -18,7 +18,7 @@ class Window_2
    end
 
    def self.bottom_bar(message = "")
-      box = TTY::Box.frame(width: 60, height: 4) do
+      box = TTY::Box.frame(width: 60, height: 3) do
          message
       end
       puts box
@@ -32,12 +32,8 @@ class Window_2
    end
 
    def self.options_bar(*options)
-      options_string = ""
-      options.each {|v| options_string += "  #{v}    |  "}
-      box = TTY::Box.frame(width: 60, height: 4) do
-         options_string
-      end
-      puts box
+      table = TTY::Table.new([options])
+      puts table.render(:unicode, alignment: [:center], width: 60, resize: true)
    end
 
    # Common Windows
