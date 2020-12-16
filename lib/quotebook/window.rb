@@ -117,9 +117,9 @@ class Window
       Screen.clear
       top_bar("GOODBYE!")
       middle_section(
-         "If you’re brave enough to say goodbye,\nlife will reward you with a new hello.\n\n-Paulo Coelho\n\n\nThank you for checking out my first CLI program!\n-Cody\n\n:)"
+         "If you’re brave enough to say goodbye,\nlife will reward you with a new hello.\n\n-Paulo Coelho\n\n\nThank you for checking out\nmy first CLI program!\n\n-Cody\n\n:)"
       )
-      sleep(5)
+      sleep(6)
       Screen.clear
       exit!
    end

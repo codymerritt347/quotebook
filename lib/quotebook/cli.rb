@@ -1,5 +1,9 @@
 class CLI
 
+   def start
+      self.class.main
+   end
+
    def self.main
       Window.main_menu_window
       prompt = TTY::Prompt.new
