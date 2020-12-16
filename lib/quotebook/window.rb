@@ -50,7 +50,7 @@ class Window
             counter += 1
          end
       end
-      top_bar("TOPIC: "+topic.upcase)
+      top_bar("TOPIC: " + topic.upcase)
       middle_section(
          table.render
       )
