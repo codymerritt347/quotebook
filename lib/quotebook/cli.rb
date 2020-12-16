@@ -46,7 +46,7 @@ class CLI
          q.messages[:range?] = "Sorry, please try again."
       end
       options = Window.one_topic_window(Genre.unique_genres[response-1])
-      response = prompt.ask("Please type number of quote:", convert: :int) do |q|
+      response = prompt.ask("Please type the number for quote:", convert: :int) do |q|
          q.in "1-15"
          q.messages[:range?] = "Sorry, please try again."
       end
@@ -54,7 +54,7 @@ class CLI
       Window.options_bar("TOPICS", "FAVE", "MAIN")
       response_2 = prompt.ask("Please type option:") do |q|
          q.modify :strip, :collapse
-         q.validate /topics\z|fave\z|menu\z/i
+         q.validate /topics\z|fave\z|main\z/i
          q.messages[:valid?] = "Sorry, please try again."
       end
       case response_2.downcase
@@ -75,9 +75,31 @@ class CLI
          q.validate /select\z|clear\z|main\z/i
          q.messages[:valid?] = "Sorry, please try again."
       end
-      case response
+      case response.downcase
       when "select"
-         puts "SELECTING"
+         response = prompt.ask("Please type the number for quote:", convert: :int) do |q|
+            q.validate(/\d/, "Please try again.")
+         end
+         until response <= Quote.favorites.count
+            puts "This isn't a quote!"
+         end
+         Window.one_quote_window(Quote.favorites[response-1])
+         Window.options_bar("BACK", "UNFAVE", "MAIN")
+         response_2 = prompt.ask("Please type option:") do |q|
+            q.modify :strip, :collapse
+            q.validate /back\z|unfave\z|main\z/i
+            q.messages[:valid?] = "Sorry, please try again."
+         end
+         case response_2.downcase
+         when "back"
+            turn_around(my_favorites)
+         when "unfave"
+            Quote.favorites[response-1].favorite = false
+            Window.alert_window("Changed your mind?!\n\nI'm not feeling that quote anymore either...\n\nThis quote has been removed from FAVORITES!")
+            turn_around(my_favorites)
+         when "main"
+            main
+         end
       when "clear"
          Window.alert_window("Clearing your Favorites List!")
          Quote.favorites.each {|q| q.favorite = false}
