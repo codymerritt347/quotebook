@@ -1,9 +1,13 @@
 class CLI_2
 
-   def start
-   end
-
-   def main_manu
+   def main
+      Window_2.main_menu_window
+      prompt = TTY::Prompt.new
+      response = prompt.ask("Please type the option you want:") do |q|
+         q.modify :strip, :collapse
+         q.validate /random|topics|favorites|exit/
+         q.messages[:valid?] = "Sorry, please try again."
+      end
    end
 
    def randomizer

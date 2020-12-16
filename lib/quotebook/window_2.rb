@@ -77,8 +77,10 @@ class Window_2
    def self.main_menu_window
       Screen.clear
       top_bar("MAIN MENU")
-      middle_section(" [TO DO:] create welcome ")
-      options_bar("RANDOM", "TOPICS", "MY FAVORITES")
+      middle_section(
+         "WELCOME TO QUOTEBOOK!\n\nBrowse #{Quote.all.count} QUOTES covering #{Genre.unique_genres.count} TOPICS\nall collected here for you to discover and get inspired. \n\nFind a quote you admire?\nAdd it to MY FAVORITES list to keep it forever... or until you exit the program, we haven't quite covered that yet!\n\nLet's get started! Choose an options below.\n\n(To EXIT, type \"exit\")"
+      )
+      options_bar("RANDOM", "TOPICS", "FAVORITES")
    end
 
    def self.randomizer_window
@@ -125,7 +127,7 @@ class Window_2
       Screen.clear
       top_bar("GOODBYE!")
       middle_section(
-
+         "GOOD BYE!\n\nThank you for\nchecking out my first ever\nCLI program!\n\n-Cody"
       )
       bottom_bar
       exit!
