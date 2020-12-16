@@ -3,4 +3,4 @@
 require_relative '../lib/environment'
 
 API.new.collect_quotes
-CLI.new.main_menu
+CLI.main

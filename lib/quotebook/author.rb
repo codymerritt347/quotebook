@@ -23,5 +23,12 @@ class Author
    def self.unique_authors
       @@unique_authors
    end
-   
+
+   def shorter_name
+      if self.name.length >= 14
+         self.name[0...13] + "..."
+      else
+         self.name
+      end
+   end
 end
