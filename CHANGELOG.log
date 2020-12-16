@@ -1,0 +1,72 @@
+657b95d was codymerritt347, 8 minutes ago, message: created Screen module file
+43ea6ca was codymerritt347, 28 minutes ago, message: unified all case messages amongst CLI methods
+5a26e8e was codymerritt347, 40 minutes ago, message: fixed random_number method to cover all 180 quotes
+3671322 was codymerritt347, 72 minutes ago, message: made CLI intantiate once before running class methods
+7f841fe was codymerritt347, 79 minutes ago, message: updated README
+46799c6 was codymerritt347, 3 hours ago, message: triple checked all relationships and looping
+bdcf2cb was codymerritt347, 3 hours ago, message: merged CLI and Window classes
+174b7a6 was codymerritt347, 5 hours ago, message: reworking CLI with new Window class
+ecc5861 was codymerritt347, 6 hours ago, message: cleaned up My Favorites window
+58e1f28 was codymerritt347, 6 hours ago, message: adjusted .bottom_bar and .options_bar
+bec3b07 was codymerritt347, 21 hours ago, message: cleaning up code smell
+ed6d557 was codymerritt347, 27 hours ago, message: cleaning up code smell
+4c1a4aa was codymerritt347, 31 hours ago, message: modified .DS_Store
+a6ee512 was codymerritt347, 32 hours ago, message: modified .DS_Store
+4c4baf9 was codymerritt347, 2 days ago, message: made second drafts of CLI and Window classes
+802384a was codymerritt347, 2 days ago, message: updated .gitignore
+649dad6 was codymerritt347, 3 days ago, message: included screenshot to push
+ff7c474 was codymerritt347, 3 days ago, message: updated gemspec, GHANGELOG, .gitignore, added video link to README
+4da8516 was codymerritt347, 3 days ago, message: tested all logic and looping
+89bce9d was codymerritt347, 3 days ago, message: updated README.md
+6f33311 was codymerritt347, 3 days ago, message: cleaning up windows and figuring our DRY solving
+8f0e43d was codymerritt347, 3 days ago, message: polishing up windows and screen clears
+795500b was codymerritt347, 3 days ago, message: removed unused formatting methods in Quote class
+851b60e was codymerritt347, 3 days ago, message: moved window class methods over to Window class
+a409186 was codymerritt347, 3 days ago, message: created Window class
+b5dac78 was codymerritt347, 4 days ago, message: extended browse section in CLI
+d4372ef was codymerritt347, 4 days ago, message: created class variables for unique authors and genres
+74eca22 was codymerritt347, 4 days ago, message: changed macros around in Quote, Author, Genre classes
+bc6d720 was codymerritt347, 4 days ago, message: added json gem back to Gemfile, enviornment.rb, and gemspec
+4e3c6b7 was codymerritt347, 4 days ago, message: added back gemspec
+495bd7a was codymerritt347, 4 days ago, message: restructed API class, created Genre class, cleaned up Gemfile
+d5b7fc3 was codymerritt347, 4 days ago, message: updated API to v3
+51b04ba was codymerritt347, 5 days ago, message: updated/comleted gemspec, updated NOTES.md
+096b89a was codymerritt347, 5 days ago, message: created CHANGELOG.md
+b762d52 was codymerritt347, 5 days ago, message: fleshed out #browse_quotes and #my_favorites in CLI class
+f160bcd was codymerritt347, 5 days ago, message: created Surprise Me prompt with case statement and branching methods
+f1b957b was codymerritt347, 5 days ago, message: added .random_quote to Quote class
+995e14e was codymerritt347, 5 days ago, message: cleaned up Quote class
+a14f667 was codymerritt347, 5 days ago, message: created categories of quotes
+96d221c was codymerritt347, 6 days ago, message: moved banner to Artwork class
+b56d8e3 was codymerritt347, 6 days ago, message: moved logo to Artwork class
+5fc5178 was codymerritt347, 6 days ago, message: created #shorter_quotes in Quote class
+1f85556 was codymerritt347, 6 days ago, message: created Artwork class
+3603ac7 was codymerritt347, 6 days ago, message: ensured SSOT
+49f875b was codymerritt347, 6 days ago, message: edited Quote and Author classes
+f452a9f was codymerritt347, 6 days ago, message: added .find_by_author and #unfavorite to Quote class
+147c59f was codymerritt347, 9 days ago, message: create Author class
+0255d1e was codymerritt347, 9 days ago, message: created gemspec
+3adf68b was codymerritt347, 9 days ago, message: started .authors and .texts in Quote class
+5a6bce4 was codymerritt347, 9 days ago, message: created basic #quote_of_the_day in CLI class
+c5845be was codymerritt347, 9 days ago, message: created basic MAIN MENU structure
+cc955a7 was codymerritt347, 9 days ago, message: improved logo and banner image in CLI class
+c6139de was codymerritt347, 9 days ago, message: updated Notes.md
+e987927 was codymerritt347, 9 days ago, message: created logo.txt file
+8dc0dab was codymerritt347, 9 days ago, message: created basic CLI methods
+657e944 was codymerritt347, 9 days ago, message: created #favorite in Quote class
+e06a17c was codymerritt347, 9 days ago, message: added colorize and tty-prompt to Gemfile
+233adc6 was codymerritt347, 10 days ago, message: finished #collect_quotes in API class
+4663ead was codymerritt347, 10 days ago, message: created #initialize in Quote class
+a7a9166 was codymerritt347, 10 days ago, message: added attr_accessors for Quote class
+8c91ee6 was codymerritt347, 10 days ago, message: creating #collect_quotes in API class
+cd19af0 was codymerritt347, 10 days ago, message: updated test.rb with pry binding
+00d69fb was codymerritt347, 10 days ago, message: created version.rb, updated enviornment.rb
+368b308 was codymerritt347, 10 days ago, message: added rake and httparty gems to Gemfile
+428333c was codymerritt347, 10 days ago, message: fleshed out basic Quote class functions
+6df5359 was codymerritt347, 10 days ago, message: created API class
+ab86da2 was codymerritt347, 10 days ago, message: created CLI class
+12aad8f was codymerritt347, 10 days ago, message: created Quote class file
+484933b was codymerritt347, 13 days ago, message: created LICENSE.md, README.md
+c20487c was codymerritt347, 13 days ago, message: created Notes.md
+b879ba2 was codymerritt347, 13 days ago, message: fleshed out structure and pushed to remote Github
+1f58f70 was codymerritt347, 13 days ago, message: created project directory and basic setup
