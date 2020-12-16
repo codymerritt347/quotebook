@@ -1,6 +1,7 @@
 class CLI
 
    def start
+      API.new.collect_quotes
       self.class.main
    end
 
@@ -81,28 +82,33 @@ class CLI
       end
       case response.downcase
       when "select"
-         response = prompt.ask("Please type the number for quote:", convert: :int) do |q|
-            q.validate(/\d/, "Please try again.")
-         end
-         until response <= Quote.favorites.count
-            puts "This isn't a quote!"
-         end
-         Window.one_quote_window(Quote.favorites[response-1])
-         Window.options_bar("BACK", "UNFAVE", "MAIN")
-         response_2 = prompt.ask("Please type option:") do |q|
-            q.modify :strip, :collapse
-            q.validate /back\z|unfave\z|main\z/i
-            q.messages[:valid?] = "Sorry, please try again."
-         end
-         case response_2.downcase
-         when "back"
+         if Quote.favorites == []
+            Window.alert_window("You have no quotes to select!")
             turn_around(my_favorites)
-         when "unfave"
-            Quote.favorites[response-1].favorite = false
-            Window.alert_window("Changed your mind?!\n\nI'm not feeling that quote anymore either...\n\nThis quote has been removed from FAVORITES!")
-            turn_around(my_favorites)
-         when "main"
-            main
+         else
+            response = prompt.ask("Please type the number for quote:", convert: :int) do |q|
+               q.validate(/\d/, "Please try again.")
+            end
+            until response <= Quote.favorites.count
+               puts "This isn't a quote!"
+            end
+            Window.one_quote_window(Quote.favorites[response-1])
+            Window.options_bar("BACK", "UNFAVE", "MAIN")
+            response_2 = prompt.ask("Please type option:") do |q|
+               q.modify :strip, :collapse
+               q.validate /back\z|unfave\z|main\z/i
+               q.messages[:valid?] = "Sorry, please try again."
+            end
+            case response_2.downcase
+            when "back"
+               turn_around(my_favorites)
+            when "unfave"
+               Quote.favorites[response-1].favorite = false
+               Window.alert_window("Changed your mind?!\n\nI'm not feeling that quote anymore either...\n\nThis quote has been removed from FAVORITES!")
+               turn_around(my_favorites)
+            when "main"
+               main
+            end
          end
       when "clear"
          Window.alert_window("Clearing your Favorites List!")

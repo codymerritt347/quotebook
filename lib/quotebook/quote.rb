@@ -37,7 +37,7 @@ class Quote
   # RANDOM
 
   def self.random_quote
-    random_number = rand(0..4999)
+    random_number = rand(0..179)
     random_quote = all[random_number]
     random_quote
   end
