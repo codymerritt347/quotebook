@@ -1,9 +1,3 @@
-module Screen
-   def self.clear
-       print "\e[2J\e[f"
-   end
-end
-
 class Window
 
    include Screen
@@ -99,7 +93,7 @@ class Window
       Screen.clear
       table = TTY::Table.new
       if Quote.favorites == []
-         table << ["You have not collected any favorites yet!"]
+         table << ["You have not collected any FAVORITES yet!"]
       else
          Quote.favorites.each_with_index do |quote, index|
             table << ["#{index+1}.", "#{quote.author.shorter_name.upcase} ", quote.shorter_quote]

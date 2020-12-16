@@ -111,9 +111,14 @@ class CLI
             end
          end
       when "clear"
-         Window.alert_window("Removing all quotes from your FAVORITES!")
-         Quote.favorites.each {|q| q.favorite = false}
-         turn_around(my_favorites)
+         if Quote.favorites != []
+            Window.alert_window("Removing all quotes from your FAVORITES!")
+            Quote.favorites.each {|q| q.favorite = false}
+            turn_around(my_favorites)
+         else
+            Window.alert_window("There are no quotes to clear!")
+            turn_around(my_favorites)
+         end
       when "main"
          main
       end

@@ -3,6 +3,7 @@ require_relative './quotebook/author'
 require_relative './quotebook/cli'
 require_relative './quotebook/genre'
 require_relative './quotebook/quote'
+require_relative './quotebook/screen'
 require_relative './quotebook/version'
 require_relative './quotebook/window'
 
