@@ -17,16 +17,16 @@ class Window_2
       puts box
    end
 
-   def self.bottom_bar(message = "")
-      box = TTY::Box.frame(width: 60, height: 3) do
-         message
+   def self.middle_section(content = "")
+      box = TTY::Box.frame(width: 60, height: 20, border: :thick, padding: 2, align: :center, title: {top_left: "\"", bottom_right: "\""}) do
+         content
       end
       puts box
    end
 
-   def self.middle_section(content = "")
-      box = TTY::Box.frame(width: 60, height: 20, border: :thick, padding: 2, align: :center, title: {top_left: "\"", bottom_right: "\""}) do
-         content
+   def self.bottom_bar(message = "")
+      box = TTY::Box.frame(width: 60, height: 3) do
+         message
       end
       puts box
    end
@@ -49,7 +49,7 @@ class Window_2
       Screen.clear
       top_bar("QUOTE")
       middle_section(
-         "#{quote.text}\n\n-#{quote.author.name}"
+         "\n#{quote.text}\n\n-#{quote.author.name}"
       )
       bottom_bar("From: #{quote.genre.name.upcase}")
    end
@@ -60,7 +60,7 @@ class Window_2
       counter = 1
       Quote.all.each do |quote|
          if quote.genre.name == topic
-            table << ["#{counter}.", quote.author.name]
+            table << ["#{counter}.", "#{quote.author.name.upcase} ", quote.shorter_quote]
             counter += 1
          end
       end
@@ -93,7 +93,7 @@ class Window_2
       Screen.clear
       table = TTY::Table.new
       Genre.unique_genres.each_with_index do |value, index|
-         table << ["#{index + 1}.", value.upcase]
+         table << ["#{index+1}.", value.upcase]
       end
       top_bar("TOPICS")
       middle_section(
@@ -105,11 +105,20 @@ class Window_2
 
    def self.my_favorites_window
       Screen.clear
+      table = TTY::Table.new
+      if Quote.favorites == []
+         table << ["You have not collected any favorites yet!"]
+      else
+         Quote.favorites.each_with_index do |quote, index|
+            table << ["#{index+1}.", "#{quote.author.name.upcase} ", quote.shorter_quote]
+         end
+      end
       top_bar("MY FAVORITES")
       middle_section(
-
+         table.render
       )
       options_bar("CLEAR", "TOPICS", "MAIN MENU")
+      Quote.favorites
    end
 
    def self.exit_window

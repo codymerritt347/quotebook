@@ -2,18 +2,18 @@ class API
 
   BASE_URL = "https://quote-garden.herokuapp.com/api/v3/"
   PATHS = [
-    "quotes?limit=10&genre=age",
-    "quotes?limit=10&genre=art",
-    "quotes?limit=10&genre=computers", 
-    "quotes?limit=10&genre=design",
-    "quotes?limit=10&genre=friendship",
-    "quotes?limit=10&genre=happiness",
-    "quotes?limit=10&genre=history",
-    "quotes?limit=10&genre=learning",
-    "quotes?limit=10&genre=motivational",
-    "quotes?limit=10&genre=nature",
-    "quotes?limit=10&genre=success",
-    "quotes?limit=10&genre=truth"
+    "quotes?limit=15&genre=age",
+    "quotes?limit=15&genre=art",
+    "quotes?limit=15&genre=computers", 
+    "quotes?limit=15&genre=design",
+    "quotes?limit=15&genre=friendship",
+    "quotes?limit=15&genre=happiness",
+    "quotes?limit=15&genre=history",
+    "quotes?limit=15&genre=learning",
+    "quotes?limit=15&genre=motivational",
+    "quotes?limit=15&genre=nature",
+    "quotes?limit=15&genre=success",
+    "quotes?limit=15&genre=truth"
   ]
 
   def collect_quotes

@@ -33,8 +33,8 @@ class Quote
 
   # FORMATTING
 
-  def shorter_quote		
-    self.text[0...20] + "..."		
+  def shorter_quote
+    self.text[0...25] + "..."
   end
 
 end
