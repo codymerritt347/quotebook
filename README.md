@@ -1,5 +1,11 @@
 # Quotebook
 
+> “Quotes help us understand, inspire, motivate, 
+> clarify and show our approach to things around,
+> this is why people and I love quotes.”
+>
+> — Takyou Allah Cheikh Malaynine
+
 This is Quotebook, a CLI program that takes quotes from QuoteGarden REST API and organizes by twelve different topics.
 Users can browse through the different topics and find quotes that inspire them. Want to be surprised? Quotebook can generate a random quote for extra inspiration.
 
