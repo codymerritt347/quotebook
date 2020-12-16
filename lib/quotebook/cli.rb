@@ -8,10 +8,10 @@ class CLI
    def self.main
       Window.main_menu_window
       prompt = TTY::Prompt.new
-      response = prompt.ask("Please type the option you want:") do |q|
+      response = prompt.ask("Please enter an option by name:") do |q|
          q.modify :strip, :collapse
          q.validate /random\z|topics\z|favorites\z|exit\z/i
-         q.messages[:valid?] = "Sorry, please try again."
+         q.messages[:valid?] = "I'm sorry, I don't understand. Please enter again."
       end
       case response.downcase
       when "random"
@@ -28,10 +28,10 @@ class CLI
    def self.randomizer
       caught_quote = Window.randomizer_window
       prompt = TTY::Prompt.new
-      response = prompt.ask("Please type the option you want:") do |q|
+      response = prompt.ask("Please enter an option by name:") do |q|
          q.modify :strip, :collapse, :down
          q.validate /another\z|fave\z|main\z/i
-         q.messages[:valid?] = "Sorry, please try again."
+         q.messages[:valid?] = "I'm sorry, I don't understand. Please enter again."
       end
       case response.downcase
       when "another"
@@ -46,21 +46,21 @@ class CLI
    def self.topics
       options = Window.topics_window
       prompt = TTY::Prompt.new
-      response = prompt.ask("Please type number of topic:", convert: :int) do |q|
+      response = prompt.ask("Please enter a topic by number:", convert: :int) do |q|
          q.in "1-12"
-         q.messages[:range?] = "Sorry, please try again."
+         q.messages[:range?] = "I'm sorry, I don't understand. Please enter again."
       end
       options = Window.one_topic_window(Genre.unique_genres[response-1])
-      response = prompt.ask("Please type the number for quote:", convert: :int) do |q|
+      response = prompt.ask("Please enter a quote by number:", convert: :int) do |q|
          q.in "1-15"
-         q.messages[:range?] = "Sorry, please try again."
+         q.messages[:range?] = "I'm sorry, I don't understand. Please enter again."
       end
       Window.one_quote_window(options[response-1])
       Window.options_bar("TOPICS", "FAVE", "MAIN")
-      response_2 = prompt.ask("Please type option:") do |q|
+      response_2 = prompt.ask("Please enter an option by name:") do |q|
          q.modify :strip, :collapse
          q.validate /topics\z|fave\z|main\z/i
-         q.messages[:valid?] = "Sorry, please try again."
+         q.messages[:valid?] = "I'm sorry, I don't understand. Please enter again."
       end
       case response_2.downcase
       when "topics"
@@ -75,43 +75,43 @@ class CLI
    def self.my_favorites
       Window.my_favorites_window
       prompt = TTY::Prompt.new
-      response = prompt.ask("Please type the option you want:") do |q|
+      response = prompt.ask("Please enter an option by name:") do |q|
          q.modify :strip, :collapse
          q.validate /select\z|clear\z|main\z/i
-         q.messages[:valid?] = "Sorry, please try again."
+         q.messages[:valid?] = "I'm sorry, I don't understand. Please enter again."
       end
       case response.downcase
       when "select"
          if Quote.favorites == []
-            Window.alert_window("You have no quotes to select!")
+            Window.alert_window("There is no quote to select!")
             turn_around(my_favorites)
          else
-            response = prompt.ask("Please type the number for quote:", convert: :int) do |q|
-               q.validate(/\d/, "Please try again.")
+            response = prompt.ask("Please enter a quote by number:", convert: :int) do |q|
+               q.validate(/\d/, "I'm sorry, I don't understand. Please enter again.")
             end
             until response <= Quote.favorites.count
-               puts "This isn't a quote!"
+               puts "I'm sorry, I don't understand. Please enter again."
             end
             Window.one_quote_window(Quote.favorites[response-1])
             Window.options_bar("BACK", "UNFAVE", "MAIN")
-            response_2 = prompt.ask("Please type option:") do |q|
+            response_2 = prompt.ask("Please enter an option by name:") do |q|
                q.modify :strip, :collapse
                q.validate /back\z|unfave\z|main\z/i
-               q.messages[:valid?] = "Sorry, please try again."
+               q.messages[:valid?] = "I'm sorry, I don't understand. Please enter again."
             end
             case response_2.downcase
             when "back"
                turn_around(my_favorites)
             when "unfave"
                Quote.favorites[response-1].favorite = false
-               Window.alert_window("Changed your mind?!\n\nI'm not feeling that quote anymore either...\n\nThis quote has been removed from FAVORITES!")
+               Window.alert_window("Changed your mind?\n\nI'm not feeling\nthat quote anymore either...\n\nThis quote has been removed from your FAVORITES!")
                turn_around(my_favorites)
             when "main"
                main
             end
          end
       when "clear"
-         Window.alert_window("Clearing your Favorites List!")
+         Window.alert_window("Removing all quotes from your FAVORITES!")
          Quote.favorites.each {|q| q.favorite = false}
          turn_around(my_favorites)
       when "main"

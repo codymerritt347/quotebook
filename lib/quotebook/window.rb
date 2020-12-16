@@ -69,7 +69,7 @@ class Window
       Screen.clear
       top_bar("QUOTEBOOK")
       middle_section(
-         "WELCOME TO QUOTEBOOK!\n\nBrowse #{Quote.all.count} QUOTES covering #{Genre.unique_genres.count} TOPICS\nall collected here for you to discover and get inspired. \n\nFind a quote you admire?\nAdd it to your FAVORITES to keep it forever... or until you exit the program, we haven't quite covered that yet!\n\nLet's get started! Choose an options below.\n\n(To EXIT, type \"exit\")"
+         "WELCOME TO QUOTEBOOK!\n\nBrowse #{Quote.all.count} QUOTES covering #{Genre.unique_genres.count} TOPICS\nall collected here for you to discover and get inspired. \n\nFind a quote you admire?\nAdd it to your FAVORITES to keep it forever... or until you exit the program, we haven't quite covered that yet!\n\nLet's get started! Please enter an option by name:\n\n(to EXIT, enter \"exit\")"
       )
       options_bar("RANDOM", "TOPICS", "FAVORITES")
    end

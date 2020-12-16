@@ -29,7 +29,7 @@ class Quote
       CLI.my_favorites
     else
       self.favorite = true
-      Window.alert_window("Great taste! I love that quote, too!\n\nThis quote has been added to FAVORITES!\n\nLet's go check it out!")
+      Window.alert_window("Great taste!\nI love that quote, too!\n\nThis quote has been added to FAVORITES!\n\nLet's go check it out!")
       CLI.my_favorites
     end
   end
