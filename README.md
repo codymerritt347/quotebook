@@ -7,16 +7,27 @@ Users can browse through the different topics and find quotes that inspire them.
 
 [Click here for Youtube tutorial](https://youtu.be/B18DGhvesYc)
 
+## Prerequisites
+
+* [Bundler](https://bundler.io/)
+
+`$ gem install bundler`
 
 ## Installation
 
-To install locally, clone this repository:
-https://github.com/codymerritt347/quotebook
+1. To install locally, clone this [repository](https://github.com/codymerritt347/quotebook)
+2. Navigate into project root folder
+3. Bundle application:
 
-Then, in your terminal, change to the repository and run the following:
-```
-./bin/run_quotebook
-```
+`$ bundle install`
+
+
+## Deployment
+
+In your terminal, run the following:
+
+`./bin/run_quotebook`
+
 
 You're ready to collect quotes!
 
@@ -25,4 +36,5 @@ You're ready to collect quotes!
 Once the main menu is loaded, you'll be greeted with a welcome message and options for generating a random quote, browse the twelves topics, or see what quotes you've collected as favorites. To access any of the menu options, type the number corresponding to the wanted option. From the main menu, type 'exit' to leave the program.
 
 ## License
+
 The gem is available as open source under the terms of the [MIT License](https://choosealicense.com/licenses/mit/).
