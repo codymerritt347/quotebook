@@ -27,8 +27,8 @@ class Author
    # FORMATTING
 
    def shorter_name
-      if self.name.length >= 14
-         self.name[0...13] + "..."
+      if self.name.length >= 18
+         self.name[0...15] + "..."
       else
          self.name
       end

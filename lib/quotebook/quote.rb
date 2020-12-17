@@ -14,6 +14,12 @@ class Quote
     self.class.all << self
   end
 
+  def self.find_by_author(author_name)
+    @@all.select do |quote|
+      quote.author.name == author_name
+    end
+  end
+
   def self.all
     @@all
   end

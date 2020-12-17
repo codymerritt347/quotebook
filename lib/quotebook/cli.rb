@@ -8,7 +8,7 @@ class CLI
    def self.main
       Window.main_menu_window
       prompt = TTY::Prompt.new
-      response = prompt.ask("Please enter an option by name:") do |q|
+      response = prompt.ask("Please enter an option by NAME:") do |q|
          q.modify :strip, :collapse
          q.validate /random\z|topics\z|favorites\z|exit\z/i
          q.messages[:valid?] = "I'm sorry, I don't understand. Please enter again."
@@ -27,8 +27,13 @@ class CLI
 
    def self.randomizer
       caught_quote = Window.randomizer_window
+
+      # SYSTEM SAY (MAC ONLY)
+      system "say", caught_quote.text
+      system "say", caught_quote.author.name
+
       prompt = TTY::Prompt.new
-      response = prompt.ask("Please enter an option by name:") do |q|
+      response = prompt.ask("Please enter an option by NAME:") do |q|
          q.modify :strip, :collapse, :down
          q.validate /another\z|fave\z|main\z/i
          q.messages[:valid?] = "I'm sorry, I don't understand. Please enter again."
@@ -46,18 +51,23 @@ class CLI
    def self.topics
       options = Window.topics_window
       prompt = TTY::Prompt.new
-      response = prompt.ask("Please enter a topic by number:", convert: :int) do |q|
+      response = prompt.ask("Please enter a topic by NUMBER:", convert: :int) do |q|
          q.in "1-12"
          q.messages[:range?] = "I'm sorry, I don't understand. Please enter again."
       end
       options = Window.one_topic_window(Genre.unique_genres[response-1])
-      response = prompt.ask("Please enter a quote by number:", convert: :int) do |q|
+      response = prompt.ask("Please enter a quote by NUMBER:", convert: :int) do |q|
          q.in "1-15"
          q.messages[:range?] = "I'm sorry, I don't understand. Please enter again."
       end
       Window.one_quote_window(options[response-1])
       Window.options_bar("TOPICS", "FAVE", "MAIN")
-      response_2 = prompt.ask("Please enter an option by name:") do |q|
+
+      # SYSTEM SAY (MAC ONLY)
+      system "say", options[response-1].text
+      system "say", options[response-1].author.name
+
+      response_2 = prompt.ask("Please enter an option by NAME:") do |q|
          q.modify :strip, :collapse
          q.validate /topics\z|fave\z|main\z/i
          q.messages[:valid?] = "I'm sorry, I don't understand. Please enter again."
@@ -75,7 +85,7 @@ class CLI
    def self.my_favorites
       Window.my_favorites_window
       prompt = TTY::Prompt.new
-      response = prompt.ask("Please enter an option by name:") do |q|
+      response = prompt.ask("Please enter an option by NAME:") do |q|
          q.modify :strip, :collapse
          q.validate /select\z|clear\z|main\z/i
          q.messages[:valid?] = "I'm sorry, I don't understand. Please enter again."
@@ -86,7 +96,7 @@ class CLI
             Window.alert_window("There is no quote to select!")
             turn_around(my_favorites)
          else
-            response = prompt.ask("Please enter a quote by number:", convert: :int) do |q|
+            response = prompt.ask("Please enter a quote by NUMBER:", convert: :int) do |q|
                q.validate(/\d/, "I'm sorry, I don't understand. Please enter again.")
             end
             until response <= Quote.favorites.count
@@ -94,7 +104,12 @@ class CLI
             end
             Window.one_quote_window(Quote.favorites[response-1])
             Window.options_bar("BACK", "UNFAVE", "MAIN")
-            response_2 = prompt.ask("Please enter an option by name:") do |q|
+
+            # SYSTEM SAY (MAC ONLY)
+            system "say", Quote.favorites[response-1].text
+            system "say", Quote.favorites[response-1].author.name
+
+            response_2 = prompt.ask("Please enter an option by NAME:") do |q|
                q.modify :strip, :collapse
                q.validate /back\z|unfave\z|main\z/i
                q.messages[:valid?] = "I'm sorry, I don't understand. Please enter again."
@@ -104,7 +119,7 @@ class CLI
                turn_around(my_favorites)
             when "unfave"
                Quote.favorites[response-1].favorite = false
-               Window.alert_window("Changed your mind?\n\nI'm not feeling\nthat quote anymore either...\n\nThis quote has been removed from your FAVORITES!")
+               Window.alert_window("Changed your mind?\n\nI'm not feeling that\nquote anymore either...\n\nThis quote has been removed from your FAVORITES!")
                turn_around(my_favorites)
             when "main"
                main
