@@ -27,11 +27,6 @@ class CLI
 
    def self.randomizer
       caught_quote = Window.randomizer_window
-
-      # SYSTEM SAY (MAC ONLY)
-      system "say", caught_quote.text
-      system "say", caught_quote.author.name
-
       prompt = TTY::Prompt.new
       response = prompt.ask("Please enter an option by NAME:") do |q|
          q.modify :strip, :collapse, :down
@@ -61,12 +56,12 @@ class CLI
          q.messages[:range?] = "I'm sorry, I don't understand. Please enter again."
       end
       Window.one_quote_window(options[response-1])
-      Window.options_bar("TOPICS", "FAVE", "MAIN")
 
       # SYSTEM SAY (MAC ONLY)
       system "say", options[response-1].text
       system "say", options[response-1].author.name
 
+      Window.options_bar("TOPICS", "FAVE", "MAIN")
       response_2 = prompt.ask("Please enter an option by NAME:") do |q|
          q.modify :strip, :collapse
          q.validate /topics\z|fave\z|main\z/i
@@ -103,12 +98,12 @@ class CLI
                puts "I'm sorry, I don't understand. Please enter again."
             end
             Window.one_quote_window(Quote.favorites[response-1])
-            Window.options_bar("BACK", "UNFAVE", "MAIN")
 
             # SYSTEM SAY (MAC ONLY)
             system "say", Quote.favorites[response-1].text
             system "say", Quote.favorites[response-1].author.name
 
+            Window.options_bar("BACK", "UNFAVE", "MAIN")
             response_2 = prompt.ask("Please enter an option by NAME:") do |q|
                q.modify :strip, :collapse
                q.validate /back\z|unfave\z|main\z/i

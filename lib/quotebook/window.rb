@@ -63,7 +63,7 @@ class Window
       Screen.clear
       top_bar("QUOTEBOOK")
       middle_section(
-         "WELCOME TO QUOTEBOOK!\n\nBrowse #{Quote.all.count} QUOTES covering #{Genre.unique_genres.count} TOPICS\nall collected here for you to discover and get inspired. \n\nFind a quote you admire?\nAdd it to your FAVORITES to keep it forever... or until you exit the program, we haven't quite covered that yet!\n\nLet's get started! Please enter an option by name:\n\n(to EXIT, enter \"exit\")"
+         "WELCOME TO QUOTEBOOK!\n\nBrowse #{Quote.all.count} QUOTES covering #{Genre.unique_genres.count} TOPICS\nall collected here for you to discover and get inspired. \n\nFind a quote you admire?\nAdd it to your FAVORITES to keep it forever...\n...or until you exit the program.\nWe haven't quite covered that yet!\n\nLet's get started! Please enter an option by name:\n\n(to EXIT, enter \"exit\")"
       )
       options_bar("RANDOM", "TOPICS", "FAVORITES")
    end
@@ -72,6 +72,11 @@ class Window
       Screen.clear
       random_num = rand(0..119)
       one_quote_window(Quote.all[random_num])
+
+      # SYSTEM SAY (MAC ONLY)
+      system "say", Quote.all[random_num].text
+      system "say", Quote.all[random_num].author.name
+
       options_bar("ANOTHER", "FAVE", "MAIN")
       Quote.all[random_num]
    end
