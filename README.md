@@ -26,7 +26,7 @@ In your terminal:
 ### Mac Users!
 
 There is a branch that contains added functionality!
-Enter `$ git checkout mac_system_say` before deployment if interested.
+Enter `$ git checkout mac_speak` before deployment if interested.
 (This branch adds system Dictation capabilities!)
 
 ## Deployment
