@@ -2,7 +2,7 @@ class Window
 
    include Screen
 
-   # Window Parts
+   # PARTS
 
    def self.top_bar(message = "")
       box = TTY::Box.frame(width: 60, height: 4) do
@@ -23,7 +23,7 @@ class Window
       puts table.render(:unicode, alignment: [:center], width: 60, resize: true)
    end
 
-   # Common Windows
+   # COMMON
 
    def self.alert_window(message = "")
       Screen.clear
@@ -57,7 +57,7 @@ class Window
       Quote.all.select {|quote| quote.genre.name == topic}
    end
 
-   # CLI Windows
+   # CLI
 
    def self.main_menu_window
       Screen.clear
