@@ -21,21 +21,27 @@ Users can browse through the different topics and find quotes that inspire them.
 
 ## Installation
 
-1. To install locally, clone this [repository](https://github.com/codymerritt347/quotebook)
-2. Navigate into project root folder
-3. Bundle application:
+### Mac Users!
 
-`$ bundle install`
+[Clone this repository](https://github.com/codymerritt347/quotebook/tree/mac_system_say)
+This version includes added system Dictation capabilities!
 
+### Non-Mac Users:
+
+[Clone this repository](https://github.com/codymerritt347/quotebook)
+This version does *not* include added system Dictation capabilities ...yet!
 
 ## Deployment
 
-In your terminal, run the following:
+In your terminal:
 
-`./bin/run_quotebook`
+* Navigate into project ROOT FOLDER "quotebook/"
+* Enter:
 
+`$ bundle install`
+`$ ./bin/run_quotebook`
 
-You're ready to collect quotes!
+Awesome! Now you're ready to collect some quotes!
 
 ## Usage
 
