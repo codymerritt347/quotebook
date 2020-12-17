@@ -109,7 +109,7 @@ class Window
 
    def self.exit_window
       Screen.clear
-      top_bar("GOODBYE!")
+      top_bar("GOOD-BYE!")
       middle_section(
          "If you’re brave enough to say goodbye,\nlife will reward you with a new hello.\n\n-Paulo Coelho\n\n\nThank you for checking out\nmy first CLI program!\n\n-Cody\n\n:)"
       )
