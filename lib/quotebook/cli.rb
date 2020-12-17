@@ -56,11 +56,6 @@ class CLI
          q.messages[:range?] = "I'm sorry, I don't understand. Please enter again."
       end
       Window.one_quote_window(options[response-1])
-
-      # SYSTEM SAY (MAC ONLY)
-      system "say", options[response-1].text
-      system "say", options[response-1].author.name
-
       Window.options_bar("TOPICS", "FAVE", "MAIN")
       response_2 = prompt.ask("Please enter an option by NAME:") do |q|
          q.modify :strip, :collapse
@@ -98,11 +93,6 @@ class CLI
                puts "I'm sorry, I don't understand. Please enter again."
             end
             Window.one_quote_window(Quote.favorites[response-1])
-
-            # SYSTEM SAY (MAC ONLY)
-            system "say", Quote.favorites[response-1].text
-            system "say", Quote.favorites[response-1].author.name
-
             Window.options_bar("BACK", "UNFAVE", "MAIN")
             response_2 = prompt.ask("Please enter an option by NAME:") do |q|
                q.modify :strip, :collapse

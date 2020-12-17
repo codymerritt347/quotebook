@@ -72,11 +72,6 @@ class Window
       Screen.clear
       random_num = rand(0..119)
       one_quote_window(Quote.all[random_num])
-
-      # SYSTEM SAY (MAC ONLY)
-      system "say", Quote.all[random_num].text
-      system "say", Quote.all[random_num].author.name
-
       options_bar("ANOTHER", "FAVE", "MAIN")
       Quote.all[random_num]
    end
