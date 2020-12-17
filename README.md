@@ -38,8 +38,10 @@ In your terminal:
 * Navigate into project ROOT FOLDER "quotebook/"
 * Enter:
 
-`$ bundle install`
-`$ ./bin/run_quotebook`
+```
+$ bundle install
+$ ./bin/run_quotebook
+```
 
 Awesome! Now you're ready to collect some quotes!
 
