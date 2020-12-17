@@ -9,8 +9,6 @@
 This is Quotebook, a CLI program that takes quotes from QuoteGarden REST API and organizes by twelve different topics.
 Users can browse through the different topics and find quotes that inspire them. Want to be surprised? Quotebook can generate a random quote for extra inspiration.
 
-![screenshot](screenshot.png "Quotebook screenshot")
-
 [Click here for Youtube tutorial](https://youtu.be/B18DGhvesYc)
 
 ## Prerequisites
@@ -41,7 +39,12 @@ $ ./bin/run_quotebook
 
 ## Usage
 
-Once the main menu is loaded, you'll be greeted with a welcome message and options for generating a random quote, browse the twelves topics, or see what quotes you've collected as favorites. To access any of the menu options, type the number corresponding to the wanted option. From the main menu, type 'exit' to leave the program.
+In the MAIN MENU, you'll be greeted with a welcome message and options for discovering a RANDOM quote; browsing quotes ranging across twelve TOPICS; and accessing your FAVORITES, a collection of bookmarked quotes to which you can add and edit.
+
+## Screenshots
+
+![screenshot of main menu](screenshot_main.png "screenshot of main menu")
+![screenshot of empty favorites](screenshot_favorites.png "screenshot of empty favorites")
 
 ## License
 
