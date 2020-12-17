@@ -21,14 +21,16 @@ Users can browse through the different topics and find quotes that inspire them.
 
 ## Installation
 
-### Mac Users!
+### Mac Users:
 
-[Clone this repository](https://github.com/codymerritt347/quotebook/tree/mac_system_say)
+[[Clone this repository]](https://github.com/codymerritt347/quotebook/tree/mac_system_say)
+
 This version includes added system Dictation capabilities!
 
 ### Non-Mac Users:
 
-[Clone this repository](https://github.com/codymerritt347/quotebook)
+[[Clone this repository]](https://github.com/codymerritt347/quotebook)
+
 This version does *not* include added system Dictation capabilities ...yet!
 
 ## Deployment
