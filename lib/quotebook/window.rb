@@ -6,7 +6,7 @@ class Window
 
    def self.top_bar(message = "")
       box = TTY::Box.frame(width: 60, height: 4) do
-         " #{DateTime.now.strftime("%b %d,/%Y %l:%M %p")}\n " + message
+         " #{DateTime.now.strftime("%b %d, %Y %l:%M %p")}\n " + message
       end
       puts box
    end
